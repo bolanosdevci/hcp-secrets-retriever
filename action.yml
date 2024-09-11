@@ -1,0 +1,36 @@
+name: 'HCP Secrets Retriever'
+description:
+  'This action will help you to get a single/all secrets within an
+  hcp/organization/project'
+author: 'BolanosDev'
+
+# Add your action's branding here. This will appear on the GitHub Marketplace.
+branding:
+  icon: 'file'
+  color: 'blue'
+
+# Define your inputs here.
+inputs:
+  hcp_client_id:
+    description: 'hpc client id'
+    required: true
+
+  hcp_client_secret:
+    description: 'hpc client secret'
+    required: true
+
+  hcp_organization_id:
+    description: 'hpc organization id'
+    required: true
+
+  hcp_project_id:
+    description: 'hpc project id'
+    required: true
+
+  hcp_project_name:
+    description: 'hpc project name'
+    required: true
+
+runs:
+  using: node20
+  main: dist/index.js
