@@ -24959,6 +24959,7 @@ async function run() {
         (0, utils_1.validate_entry)('hcp_project_id', project_name);
         (0, utils_1.validate_entry)('hcp_project_name', project_name);
         const access_token = await (0, utils_1.get_access_token)(client_id, client_secret);
+        console.log('f: token', access_token);
         if (access_token) {
             (0, core_1.debug)(`access_token: ${(0, utils_1.mask_entry)(access_token)}`);
             const secrets = await (0, utils_1.get_project_secrets)(organization_id, project_id, project_name, access_token);
@@ -24980,8 +24981,12 @@ async function run() {
                 }
             }
         }
+        else {
+            throw new Error('access_token could not been retrieved');
+        }
     }
     catch (error) {
+        console.log('f: error', error);
         // Fail the workflow run if an error occurs
         if (error instanceof Error)
             (0, core_1.setFailed)(error.message);
@@ -25012,7 +25017,7 @@ const validate_entry = (key, value) => {
 };
 exports.validate_entry = validate_entry;
 const mask_entry = (value) => {
-    if (value.length > 4) {
+    if (value?.length > 4) {
         const last_chars = value.substr(value.length - 4, value.length);
         return '****' + last_chars;
     }

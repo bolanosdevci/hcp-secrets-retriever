@@ -63,8 +63,6 @@ jobs:
           HCP_PROJECT_ID: ${{secrets.HCP_PROJECT_ID}}
           HCP_PROJECT_NAME: ${{secrets.HCP_PROJECT_NAME}}
 
-      - run: ls -la
       - run:
           jq 'map("\(.key)=\(.value)")|.[]' hcp_secrets.json --raw-output >
           app.env
-      - run: tail app.env

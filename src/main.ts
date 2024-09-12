@@ -34,6 +34,7 @@ export async function run(): Promise<void> {
 
     const access_token = await get_access_token(client_id, client_secret)
 
+    console.log('f: token', access_token)
     if (access_token) {
       debug(`access_token: ${mask_entry(access_token)}`)
       const secrets = await get_project_secrets(
@@ -61,8 +62,11 @@ export async function run(): Promise<void> {
           throw new Error('error writting secrets file')
         }
       }
+    } else {
+      throw new Error('access_token could not been retrieved')
     }
   } catch (error) {
+    console.log('f: error', error)
     // Fail the workflow run if an error occurs
     if (error instanceof Error) setFailed(error.message)
   }
