@@ -1,4 +1,4 @@
-name: 'HCP Secrets Retriever'
+name: 'bolanosdev/hcp-secrets-retriever'
 description:
   'This action will help you to get a single/all secrets within an
   hcp/organization/project'
