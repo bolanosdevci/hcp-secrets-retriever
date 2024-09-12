@@ -24980,6 +24980,9 @@ async function run() {
                 }
             }
         }
+        else {
+            throw new Error('access_token could not been retrieved');
+        }
     }
     catch (error) {
         // Fail the workflow run if an error occurs
@@ -25012,7 +25015,7 @@ const validate_entry = (key, value) => {
 };
 exports.validate_entry = validate_entry;
 const mask_entry = (value) => {
-    if (value.length > 4) {
+    if (value?.length > 4) {
         const last_chars = value.substr(value.length - 4, value.length);
         return '****' + last_chars;
     }

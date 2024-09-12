@@ -61,6 +61,8 @@ export async function run(): Promise<void> {
           throw new Error('error writting secrets file')
         }
       }
+    } else {
+      throw new Error('access_token could not been retrieved')
     }
   } catch (error) {
     // Fail the workflow run if an error occurs

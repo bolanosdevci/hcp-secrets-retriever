@@ -1,6 +1,6 @@
 # Dependency directory
 node_modules
-
+hcp_secrets.json
 # Rest pulled from https://github.com/github/gitignore/blob/master/Node.gitignore
 # Logs
 logs
