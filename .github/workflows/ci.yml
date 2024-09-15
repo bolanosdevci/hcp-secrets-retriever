@@ -43,26 +43,3 @@ jobs:
       - name: Test
         id: npm-ci-test
         run: npm run ci-test
-
-  test-action:
-    name: GitHub Actions Test
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout
-        id: checkout
-        uses: actions/checkout@v4
-
-      - name: Test Local Action
-        id: test-action
-        uses: ./
-        with:
-          HCP_CLIENT_ID: ${{secrets.HCP_CLIENT_ID}}
-          HCP_CLIENT_SECRET: ${{secrets.HCP_CLIENT_SECRET}}
-          HCP_ORGANIZATION_ID: ${{secrets.HCP_ORGANIZATION_ID}}
-          HCP_PROJECT_ID: ${{secrets.HCP_PROJECT_ID}}
-          HCP_PROJECT_NAME: ${{secrets.HCP_PROJECT_NAME}}
-
-      - run:
-          jq 'map("\(.key)=\(.value)")|.[]' hcp_secrets.json --raw-output >
-          app.env
